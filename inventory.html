@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Table</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: linear-gradient(rgba(138, 197, 149, 0.5), rgba(138, 197, 149, 0.5)), url('https://img.freepik.com/premium-photo/woman-hand-hold-supermarket-shopping-cart-with-fresh-fruit-vegetable-shelves-grocery-store_293060-6001.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .navbar {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar .menu {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar .menu a {
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar .menu a:hover {
+            background-color: darkgreen;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .date-block {
+            position: absolute;
+            top: 80px;
+            right: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 18px;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color:rgba(0,100,0);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        td {
+            font-size: 16px;
+        }
+
+        .action-btn {
+            width: 200px;
+            padding: 12px;
+            background-color:rgba(0,100,0);
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="menu">
+            <a href="retailer.html">Home</a>
+            <a href="inventory.html">Inventory Dashboard</a>
+            <a href="surplus_m.html">Surplus Management</a>
+            <a href="expired-products.html">Expired Products</a>
+            <a href="about-us.html">About Us</a>
+            <a href="login.html">Login</a>
+        </div>
+    </div>
+
+    <h1>Inventory Table</h1>
+
+    <!-- Date Block -->
+    <div class="date-block">
+        <label for="date-picker">Select Date: </label>
+        <input type="date" id="date-picker" name="date-picker" value="<?php echo date('Y-m-d'); ?>" />
+        <div id="current-date">
+            <strong>Current Date: </strong> <span id="date-span"></span>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Item ID</th>
+                <th>Item Name</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Unit Type</th>
+                <th>Expiry Date</th>
+                <th>Status</th>
+                <th>Price/Unit (₹)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Milk 500ml</td>
+                <td>Dairy</td>
+                <td>50</td>
+                <td>Bottles</td>
+                <td>2025-01-12</td>
+                <td>Fresh</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Bread Loaf</td>
+                <td>Baked Goods</td>
+                <td>20</td>
+                <td>Pieces</td>
+                <td>2025-01-10</td>
+                <td>Near Expiry</td>
+                <td>40</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Apples</td>
+                <td>Fruits</td>
+                <td>100</td>
+                <td>Kg</td>
+                <td>2025-01-15</td>
+                <td>Fresh</td>
+                <td>150</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Yogurt Cup</td>
+                <td>Dairy</td>
+                <td>60</td>
+                <td>Cups</td>
+                <td>2025-01-09</td>
+                <td>Near Expiry</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Spinach</td>
+                <td>Vegetables</td>
+                <td>30</td>
+                <td>Bunches</td>
+                <td>2025-01-08</td>
+                <td>Near Expiry</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Chocolate Cookies</td>
+                <td>Snacks</td>
+                <td>40</td>
+                <td>Packs</td>
+                <td>2025-02-01</td>
+                <td>Fresh</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Wheat</td>
+                <td>Grains</td>
+                <td>25</td>
+                <td>Kg</td>
+                <td>2025-01-10</td>
+                <td>Near Expiry</td>
+                <td>200</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Orange Juice 1L</td>
+                <td>Beverages</td>
+                <td>15</td>
+                <td>Bottles</td>
+                <td>2025-01-20</td>
+                <td>Fresh</td>
+                <td>60</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Rice (Basmati)</td>
+                <td>Grains</td>
+                <td>200</td>
+                <td>Kg</td>
+                <td>2025-12-31</td>
+                <td>Fresh</td>
+                <td>90</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Tomato Ketchup</td>
+                <td>Condiments</td>
+                <td>30</td>
+                <td>Bottles</td>
+                <td>2025-07-01</td>
+                <td>Fresh</td>
+                <td>80</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button class="action-btn" onclick="window.location.href='addinventory.html'">
+        Add/Update Inventory
+    </button>
+    
+    
+
+    <script>
+        // Function to update current date when user changes the date
+        const datePicker = document.getElementById('date-picker');
+        const currentDateSpan = document.getElementById('date-span');
+
+        // Function to display the selected date
+        function updateDate() {
+            const selectedDate = datePicker.value;
+            currentDateSpan.innerText = selectedDate;
+        }
+
+        // Initial current date display
+        const currentDate = new Date().toISOString().split('T')[0];
+        datePicker.value = currentDate;  // Set the default date to current date
+        currentDateSpan.innerText = currentDate;
+
+        // Event listener for date picker change
+        datePicker.addEventListener('change', updateDate);
+    </script>
+</body>
+</html>
